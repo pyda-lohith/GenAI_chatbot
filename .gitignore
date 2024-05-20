@@ -130,6 +130,7 @@ venv.bak/
 venv_chatbot
 .env
 
+
 # Spyder project settings
 .spyderproject
 .spyproject
