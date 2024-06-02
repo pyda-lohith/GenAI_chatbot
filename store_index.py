@@ -1,6 +1,8 @@
 from src.helper import load_pdf, text_split, download_hugging_face_embeddings
-from langchain.vectorstores import Pinecone
+# from langchain.vectorstores import Pinecone
 import pinecone
+from pinecone import Pinecone, ServerlessSpec
+from langchain_pinecone import PineconeVectorStore
 from dotenv import load_dotenv
 import os
 
@@ -25,5 +27,4 @@ pc = Pinecone(
 
 
 index_name="chatbotmedicalexplore"
-
-docsearch=Pinecone.from_texts([t.page_content for t in text_chunks], embeddings, index_name=index_name)
+docsearch= PineconeVectorStore.from_documents(text_chunks,embeddings,index_name=index_name)
